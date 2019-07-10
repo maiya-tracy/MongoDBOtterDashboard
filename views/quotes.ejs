@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  </script>
+</head>
+
+<body id="pagebox" name="pagebox">
+  <div class="container">
+    <div class="h2">Here are the awesome quotes!</div>
+    <% if(quotes) { %>
+    <% for (var x of quotes) { %>
+    <h3>Quote: <%= x.quote %></h3>
+    <h3>Quoter: <%= x.quoter %></h3>
+    <h3>Date Created: <%= x.createdAt %></h3>
+    <% } %>
+    <% } %>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  </script>
+</head>
+
+<body id="pagebox" name="pagebox">
+  <div class="container">
+    <div class="h2">Otters</div>
+    <%- JSON.stringify(messages) %>
+    <!-- based on the structure of your messages, determine how to display them -->
+    <% if(messages.ottererrors) { %>
+    <% for (var x of messages.ottererrors) { %>
+    <h3 class="text-danger"><%= x %></h3>
+    <% } %>
+    <% } %>
+    <table class="table table-striped">
+    			<thead>
+    				<tr>
+    					<th scope="col">Name</th>
+    					<th scope="col">Age</th>
+    					<th scope="col">Actions</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<% for (var x in otters) { %>
+    					<tr>
+    						<td scope="row"><%= otters[x].name %></td>
+    						<td><%= otters[x].age %></td>
+    						<td><a href="/otter/<%= otters[x]._id %>">Details </a> | <a href="/otter/edit/<%= otters[x]._id %>">Edit </a>| <a href="/otter/destroy/<%= otters[x]._id %>">Delete </a></td>
+    					</tr>
+    				<% } %>
+    			</tbody>
+    		</table>
+    		<a class="btn btn-outline-info mt-3" href="/otter/new">Add an Otter</a>
+
+  </div>
+</body>
+
+</html>
